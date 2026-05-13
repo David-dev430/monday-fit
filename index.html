@@ -3,169 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monday Fit | Catálogo</title>
+    <title>Mönday Fit | Este Lunes Sí</title>
     <style>
         :root {
-            --rosa-claro: #fdf2f5;
+            --rosa-pastel: #fdf2f5;
             --piel: #faf3ef;
             --marron-logo: #3d1c1c;
             --acento-rosa: #f48fb1;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
-            background-color: #fff;
+            background-color: var(--blanco);
             color: var(--marron-logo);
-            margin: 0;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
+        /* --- Navegación Dinámica --- */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--marron-logo);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--acento-rosa);
+        }
+
+        /* --- Header --- */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-bottom: 3px solid var(--rosa-claro);
+            padding: 60px 20px;
+            background: var(--blanco);
         }
 
         .logo-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin: 0;
             font-weight: 800;
+            letter-spacing: -1px;
+            animation: fadeInDown 1s ease;
         }
 
         .slogan {
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             color: var(--acento-rosa);
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: bold;
+            animation: fadeInUp 1.2s ease;
         }
 
-        .intro {
+        /* --- Sección Sobre Nosotros --- */
+        #sobre-nosotros {
             background: var(--piel);
-            padding: 60px 20px;
+            padding: 80px 10%;
             text-align: center;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .section-tag {
+            color: var(--acento-rosa);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
         .intro p {
-            max-width: 650px;
+            max-width: 800px;
             margin: 0 auto;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 1.8;
+            color: #5a4a4a;
+        }
+
+        /* --- Galería Simétrica (3x2 para que sean 3 arriba y 3 abajo) --- */
+        .gallery-container {
+            padding: 80px 10%;
+            background: white;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 50px 10%;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas exactas */
+            gap: 40px;
+        }
+
+        /* Responsive: si la pantalla es pequeña, se pone en 1 columna */
+        @media (max-width: 900px) {
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: 1fr; }
         }
 
         .card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid var(--rosa-claro);
+            position: relative;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(244, 143, 177, 0.2);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(244, 143, 177, 0.2);
         }
 
         .card img {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .card:hover img {
+            filter: brightness(0.9);
         }
 
         .card-info {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
+            background: white;
         }
 
         .card-info h3 {
             margin: 0;
-            font-size: 1.2rem;
-            color: var(--marron-logo);
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
+        /* --- Footer --- */
         footer {
             background: var(--marron-logo);
             color: white;
             text-align: center;
-            padding: 30px;
-            font-size: 0.9rem;
+            padding: 50px 20px;
         }
 
-        /* Animación de entrada */
-        .fade-up {
-            animation: fadeUp 1s ease-out forwards;
+        .footer-content p {
+            margin: 5px 0;
+            opacity: 0.8;
         }
 
-        @keyframes fadeUp {
+        /* --- Animaciones --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s all ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="https://wa.me/51900000000" target="_blank">Contacto</a> </nav>
+
     <header>
-        <div class="fade-up">
-            <h1 class="logo-title">Mönday Fit</h1>
-            <div class="slogan">ESTE LUNES SI</div>
-        </div>
+        <h1 class="logo-title">Mönday Fit</h1>
+        <div class="slogan">ESTE LUNES SI</div>
     </header>
 
-    <section class="intro">
-        <div class="fade-up">
-            <h2>Moda Fitness en Huacho</h2>
-            <p>
-                Somos un emprendimiento local dedicado a empoderar tus mañanas. 
-                Nuestras prendas están diseñadas para ofrecerte la máxima flexibilidad 
-                y un estilo único que te hará destacar en cada repetición.
-            </p>
+    <section id="sobre-nosotros" class="intro">
+        <span class="section-tag">Nuestra Historia</span>
+        <h2>Moda Fitness en Huacho</h2>
+        <p>
+            Somos un emprendimiento local nacido en el corazón de Huacho, dedicado a empoderar tus mañanas y transformar tu disciplina en estilo. 
+            Nuestras prendas están diseñadas para ofrecerte la máxima flexibilidad y un soporte excepcional, 
+            utilizando materiales de alta calidad que se adaptan a cada uno de tus movimientos.
+        </p>
+    </section>
+
+    <section id="catalogo" class="gallery-container">
+        <span class="section-tag" style="text-align: center; display: block;">Colección Actual</span>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Elige tu Outfit</h2>
+        
+        <div class="gallery">
+            <div class="card scroll-reveal">
+                <img src="active-zip.jpg.jpeg" alt="Active Zip">
+                <div class="card-info"><h3>Active Zip</h3></div>
+            </div>
+
+            <div class="card scroll-reveal">
+                <img src="enterizo_azul.png.jpeg" alt="Enterizo Open Fit azul">
+                <div class="card-info"><h3>Enterizo Open Fit azul</h3></div>
+            </div>
+
+            <div class="card scroll-reveal">
+                <img src="trio_contour.png.jpeg" alt="Trío Contour">
+                <div class="card-info"><h3>Trío Contour</h3></div>
+            </div>
+
+            <div class="card scroll-reveal">
+                <img src="flare_fit.png.jpeg" alt="Flare Fit">
+                <div class="card-info"><h3>Flare Fit</h3></div>
+            </div>
+
+            <div class="card scroll-reveal">
+                <img src="elite_gris.png.jpeg" alt="Élite Zip Gris">
+                <div class="card-info"><h3>Élite Zip Gris</h3></div>
+            </div>
+
+            <div class="card scroll-reveal">
+                <img src="key_top.png.jpeg" alt="Key Top">
+                <div class="card-info"><h3>Key Top</h3></div>
+            </div>
         </div>
     </section>
 
-    <div class="gallery">
-        <div class="card">
-            <img src="active-zip.jpg.jpeg" alt="Active Zip">
-            <div class="card-info"><h3>Active Zip</h3></div>
-        </div>
-
-        <div class="card">
-            <img src="enterizo_azul.png.jpeg" alt="Enterizo Open Fit Azul">
-            <div class="card-info"><h3>Enterizo Open Fit azul</h3></div>
-        </div>
-
-        <div class="card">
-            <img src="trio_contour.png.jpeg" alt="Trío Contour">
-            <div class="card-info"><h3>Trío Contour</h3></div>
-        </div>
-
-        <div class="card">
-            <img src="flare_fit.png.jpeg" alt="Flare Fit">
-            <div class="card-info"><h3>Flare Fit</h3></div>
-        </div>
-
-        <div class="card">
-            <img src="elite_gris.png.jpeg" alt="Élite Zip Gris">
-            <div class="card-info"><h3>Élite Zip Gris</h3></div>
-        </div>
-
-        <div class="card">
-            <img src="key_top.png.jpeg" alt="Key Top">
-            <div class="card-info"><h3>key top</h3></div>
-        </div>
-    </div>
-
     <footer>
-        <p>Proyecto Emprendimiento - Huacho, Perú</p>
-        <p>Lunes Fit &copy; 2026</p>
+        <div class="footer-content">
+            <p><strong>Monday Fit</strong> - Hecho con amor en Huacho, Perú 🇵🇪</p>
+            <p>Proyecto Emprendimiento &copy; 2026</p>
+            <p style="font-size: 0.7rem; margin-top: 20px;">@mondayfit_huacho</p>
+        </div>
     </footer>
 
+    <script>
+        // Animación de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
