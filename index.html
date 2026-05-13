@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monday Fit | Catálogo</title>
+    <style>
+        :root {
+            --rosa-claro: #fdf2f5;
+            --piel: #faf3ef;
+            --marron-logo: #3d1c1c;
+            --acento-rosa: #f48fb1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #fff;
+            color: var(--marron-logo);
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-bottom: 3px solid var(--rosa-claro);
+        }
+
+        .logo-title {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .slogan {
+            letter-spacing: 6px;
+            color: var(--acento-rosa);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .intro {
+            background: var(--piel);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .intro p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 50px 10%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid var(--rosa-claro);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(244, 143, 177, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--marron-logo);
+        }
+
+        footer {
+            background: var(--marron-logo);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Animación de entrada */
+        .fade-up {
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="fade-up">
+            <h1 class="logo-title">Mönday Fit</h1>
+            <div class="slogan">ESTE LUNES SI</div>
+        </div>
+    </header>
+
+    <section class="intro">
+        <div class="fade-up">
+            <h2>Moda Fitness en Huacho</h2>
+            <p>
+                Somos un emprendimiento local dedicado a empoderar tus mañanas. 
+                Nuestras prendas están diseñadas para ofrecerte la máxima flexibilidad 
+                y un estilo único que te hará destacar en cada repetición.
+            </p>
+        </div>
+    </section>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="image_38743f_1.png" alt="Active Zip">
+            <div class="card-info"><h3>Active Zip</h3></div>
+        </div>
+
+        <div class="card">
+            <img src="image_38743f_2.png" alt="Enterizo Open Fit azul">
+            <div class="card-info"><h3>Enterizo Open Fit azul</h3></div>
+        </div>
+
+        <div class="card">
+            <img src="image_387423_1.png" alt="Trío Contour">
+            <div class="card-info"><h3>Trío Contour</h3></div>
+        </div>
+
+        <div class="card">
+            <img src="image_387423_2.png" alt="Flare Fit">
+            <div class="card-info"><h3>Flare Fit</h3></div>
+        </div>
+
+        <div class="card">
+            <img src="image_38741c_1.png" alt="Élite Zip Gris">
+            <div class="card-info"><h3>Élite Zip Gris</h3></div>
+        </div>
+
+        <div class="card">
+            <img src="image_38741c_2.png" alt="key top">
+            <div class="card-info"><h3>key top</h3></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Proyecto Emprendimiento - Huacho, Perú</p>
+        <p>Lunes Fit &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
